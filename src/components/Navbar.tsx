@@ -13,7 +13,8 @@ const Navbar = () => {
     { label: 'Início', path: '/' },
     { label: 'Laboratórios', path: '/laboratorios' },
     { label: 'Pesquisas', path: '/pesquisas' },
-    { label: 'Notícias', path: '/noticias' }
+    { label: 'Notícias', path: '/noticias' },
+    { label: 'Chat', path: '/chat' }
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -30,8 +31,8 @@ const Navbar = () => {
                 onClick={() => navigate(item.path)}
                 className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                   isActive(item.path)
-                    ? 'text-blue-600 bg-blue-50'
-                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    ? 'text-white bg-[#008542]'
+                    : 'text-gray-600 hover:text-white hover:bg-[#006298]'
                 }`}
               >
                 {item.label}
@@ -47,16 +48,16 @@ const Navbar = () => {
             <Input
               type="text"
               placeholder="Buscar laboratórios, pesquisas, notícias..."
-              className="pl-10 pr-4 py-2 w-full"
+              className="pl-10 pr-4 py-2 w-full focus:ring-[#008542] focus:border-[#008542]"
             />
           </div>
         </div>
 
         {/* Right Actions */}
         <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="sm" className="relative">
+          <Button variant="ghost" size="sm" className="relative hover:bg-[#fdc82f]/20">
             <Bell className="w-5 h-5" />
-            <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+            <span className="absolute -top-1 -right-1 bg-[#fdc82f] text-black text-xs rounded-full w-5 h-5 flex items-center justify-center font-medium">
               3
             </span>
           </Button>
@@ -65,9 +66,9 @@ const Navbar = () => {
             variant="ghost" 
             size="sm"
             onClick={() => navigate('/perfil')}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-2 hover:bg-[#006298]/20"
           >
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-sm font-semibold">
+            <div className="w-8 h-8 bg-gradient-to-br from-[#008542] to-[#006298] rounded-full flex items-center justify-center text-white text-sm font-semibold">
               U
             </div>
             <span className="text-sm font-medium">Usuário</span>

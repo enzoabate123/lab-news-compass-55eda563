@@ -23,7 +23,7 @@ const Sidebar = () => {
     <div className="w-64 bg-gradient-to-b from-slate-900 to-slate-800 text-white h-screen flex flex-col">
       {/* Header */}
       <div className="p-4 border-b border-slate-700">
-        <h2 className="text-lg font-semibold text-blue-200">Research Hub</h2>
+        <h2 className="text-lg font-semibold text-[#fdc82f]">Aba</h2>
       </div>
 
       {/* Tab Controls */}
@@ -32,7 +32,7 @@ const Sidebar = () => {
           variant={activeTab === 'conversations' ? 'default' : 'ghost'}
           size="sm"
           onClick={() => setActiveTab('conversations')}
-          className="flex-1 text-xs"
+          className="flex-1 text-xs bg-[#008542] hover:bg-[#006835]"
         >
           <MessageCircle className="w-4 h-4 mr-1" />
           Conversas
@@ -41,7 +41,7 @@ const Sidebar = () => {
           variant={activeTab === 'contacts' ? 'default' : 'ghost'}
           size="sm"
           onClick={() => setActiveTab('contacts')}
-          className="flex-1 text-xs"
+          className="flex-1 text-xs bg-[#008542] hover:bg-[#006835]"
         >
           <Users className="w-4 h-4 mr-1" />
           Contatos
@@ -64,7 +64,7 @@ const Sidebar = () => {
                 <Hash className="w-4 h-4 mr-2 text-slate-400" />
                 <span className="flex-1 text-sm truncate">{conv.name}</span>
                 {conv.unread > 0 && (
-                  <span className="bg-red-500 text-xs px-1.5 py-0.5 rounded-full">
+                  <span className="bg-[#fdc82f] text-black text-xs px-1.5 py-0.5 rounded-full font-medium">
                     {conv.unread}
                   </span>
                 )}
@@ -84,12 +84,12 @@ const Sidebar = () => {
                 className="flex items-center p-2 rounded hover:bg-slate-700 cursor-pointer"
               >
                 <div className="relative">
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-sm font-semibold">
+                  <div className="w-8 h-8 bg-gradient-to-br from-[#006298] to-[#008542] rounded-full flex items-center justify-center text-sm font-semibold">
                     {contact.name.split(' ').map(n => n[0]).join('')}
                   </div>
                   <div className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 border-2 border-slate-800 rounded-full ${
-                    contact.status === 'online' ? 'bg-green-400' : 
-                    contact.status === 'away' ? 'bg-yellow-400' : 'bg-gray-400'
+                    contact.status === 'online' ? 'bg-[#008542]' : 
+                    contact.status === 'away' ? 'bg-[#fdc82f]' : 'bg-gray-400'
                   }`} />
                 </div>
                 <div className="ml-3 flex-1">

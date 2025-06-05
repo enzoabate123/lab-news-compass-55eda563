@@ -62,16 +62,15 @@ const Home = () => {
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
-          <Card key={index}>
+          <Card key={index} className="border-l-4 border-l-[#008542]">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">{stat.title}</p>
                   <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-                  <p className="text-sm text-green-600 font-medium">{stat.change}</p>
                 </div>
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <stat.icon className="w-6 h-6 text-blue-600" />
+                <div className="w-12 h-12 bg-gradient-to-br from-[#008542] to-[#006298] rounded-lg flex items-center justify-center">
+                  <stat.icon className="w-6 h-6 text-white" />
                 </div>
               </div>
             </CardContent>
@@ -85,7 +84,7 @@ const Home = () => {
         <div>
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-semibold text-gray-900">Pesquisas em Destaque</h2>
-            <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+            <button className="text-[#006298] hover:text-[#008542] text-sm font-medium">
               Ver todas
             </button>
           </div>
@@ -100,7 +99,7 @@ const Home = () => {
         <div>
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-xl font-semibold text-gray-900">Notícias Recentes</h2>
-            <button className="text-blue-600 hover:text-blue-700 text-sm font-medium">
+            <button className="text-[#006298] hover:text-[#008542] text-sm font-medium">
               Ver todas
             </button>
           </div>
@@ -111,29 +110,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      {/* Quick Actions */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Ações Rápidas</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <button className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 text-left transition-colors">
-              <h3 className="font-medium text-gray-900 mb-1">Novo Laboratório</h3>
-              <p className="text-sm text-gray-600">Registrar um novo laboratório na plataforma</p>
-            </button>
-            <button className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 text-left transition-colors">
-              <h3 className="font-medium text-gray-900 mb-1">Iniciar Pesquisa</h3>
-              <p className="text-sm text-gray-600">Começar um novo projeto de pesquisa</p>
-            </button>
-            <button className="p-4 border border-gray-200 rounded-lg hover:bg-gray-50 text-left transition-colors">
-              <h3 className="font-medium text-gray-900 mb-1">Gerar Relatório</h3>
-              <p className="text-sm text-gray-600">Criar relatório de atividades</p>
-            </button>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 };

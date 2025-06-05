@@ -17,48 +17,32 @@ const ResearchCard: React.FC<ResearchCardProps> = ({
   description,
   researchers,
   lastUpdate,
-  progress,
   category
 }) => {
   return (
-    <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+    <Card className="hover:shadow-lg transition-shadow cursor-pointer border-l-4 border-l-[#008542]">
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <span className="inline-block px-2 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded-full mb-2">
+            <span className="inline-block px-2 py-1 text-xs font-medium bg-[#008542] text-white rounded-full mb-2">
               {category}
             </span>
             <CardTitle className="text-lg mb-2">{title}</CardTitle>
           </div>
-          <TrendingUp className="w-5 h-5 text-green-500" />
+          <TrendingUp className="w-5 h-5 text-[#fdc82f]" />
         </div>
       </CardHeader>
       <CardContent>
         <p className="text-gray-600 text-sm mb-4 line-clamp-3">{description}</p>
         
-        <div className="space-y-3">
-          <div className="flex items-center justify-between text-sm">
-            <div className="flex items-center text-gray-500">
-              <Users className="w-4 h-4 mr-1" />
-              {researchers} pesquisadores
-            </div>
-            <div className="flex items-center text-gray-500">
-              <Calendar className="w-4 h-4 mr-1" />
-              {lastUpdate}
-            </div>
+        <div className="flex items-center justify-between text-sm">
+          <div className="flex items-center text-gray-500">
+            <Users className="w-4 h-4 mr-1" />
+            {researchers} pesquisadores
           </div>
-          
-          <div>
-            <div className="flex justify-between text-sm mb-1">
-              <span className="text-gray-600">Progresso</span>
-              <span className="font-medium">{progress}%</span>
-            </div>
-            <div className="w-full bg-gray-200 rounded-full h-2">
-              <div
-                className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full transition-all"
-                style={{ width: `${progress}%` }}
-              ></div>
-            </div>
+          <div className="flex items-center text-gray-500">
+            <Calendar className="w-4 h-4 mr-1" />
+            {lastUpdate}
           </div>
         </div>
       </CardContent>

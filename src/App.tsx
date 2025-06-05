@@ -10,6 +10,7 @@ import Laboratorios from "./pages/Laboratorios";
 import Pesquisas from "./pages/Pesquisas";
 import Noticias from "./pages/Noticias";
 import Perfil from "./pages/Perfil";
+import Chat from "./pages/Chat";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/pesquisas" element={<Layout><Pesquisas /></Layout>} />
           <Route path="/noticias" element={<Layout><Noticias /></Layout>} />
           <Route path="/perfil" element={<Layout><Perfil /></Layout>} />
+          <Route path="/chat" element={<Layout><Chat /></Layout>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -21,7 +21,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
   imageUrl
 }) => {
   return (
-    <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+    <Card className="hover:shadow-lg transition-shadow cursor-pointer border-l-4 border-l-[#006298]">
       {imageUrl && (
         <div className="h-48 bg-gray-200 rounded-t-lg overflow-hidden">
           <img 
@@ -33,7 +33,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
       )}
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between">
-          <span className="inline-block px-2 py-1 text-xs font-medium bg-green-100 text-green-700 rounded-full mb-2">
+          <span className="inline-block px-2 py-1 text-xs font-medium bg-[#fdc82f] text-black rounded-full mb-2">
             {category}
           </span>
           <ExternalLink className="w-4 h-4 text-gray-400" />
