@@ -7,10 +7,10 @@ import NewsCard from '@/components/NewsCard';
 
 const Home = () => {
   const stats = [
-    { title: 'Laboratórios Ativos', value: '24', icon: Activity, change: '+12%' },
-    { title: 'Pesquisas em Andamento', value: '156', icon: BookOpen, change: '+8%' },
-    { title: 'Publicações este Mês', value: '43', icon: TrendingUp, change: '+23%' },
-    { title: 'Notícias Relevantes', value: '89', icon: Newspaper, change: '+15%' }
+    { title: 'Laboratórios Ativos', value: '24', icon: Activity },
+    { title: 'Pesquisas em Andamento', value: '156', icon: BookOpen },
+    { title: 'Publicações este Mês', value: '43', icon: TrendingUp },
+    { title: 'Notícias Relevantes', value: '89', icon: Newspaper }
   ];
 
   const featuredResearch = [
@@ -19,7 +19,6 @@ const Home = () => {
       description: 'Estudo inovador sobre a identificação precoce de doenças cardiovasculares através de biomarcadores específicos.',
       researchers: 8,
       lastUpdate: '2 dias atrás',
-      progress: 78,
       category: 'Cardiologia'
     },
     {
@@ -27,7 +26,6 @@ const Home = () => {
       description: 'Desenvolvimento de novas técnicas de terapia genética para tratamento de doenças raras.',
       researchers: 12,
       lastUpdate: '1 dia atrás',
-      progress: 92,
       category: 'Genética'
     },
     {
@@ -35,7 +33,6 @@ const Home = () => {
       description: 'Aplicação de nanotecnologia no desenvolvimento de sistemas de entrega de medicamentos.',
       researchers: 6,
       lastUpdate: '3 dias atrás',
-      progress: 65,
       category: 'Nanotecnologia'
     }
   ];
@@ -58,16 +55,16 @@ const Home = () => {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Stats Overview */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
-          <Card key={index} className="border-l-4 border-l-[#008542]">
+          <Card key={index} className="hover:shadow-lg transition-shadow">
             <CardContent className="p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">{stat.title}</p>
-                  <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                  <p className="text-sm font-medium text-gray-600 mb-2">{stat.title}</p>
+                  <p className="text-3xl font-bold text-gray-900">{stat.value}</p>
                 </div>
                 <div className="w-12 h-12 bg-gradient-to-br from-[#008542] to-[#006298] rounded-lg flex items-center justify-center">
                   <stat.icon className="w-6 h-6 text-white" />
@@ -81,14 +78,14 @@ const Home = () => {
       {/* Main Content Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Research Section */}
-        <div>
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-gray-900">Pesquisas em Destaque</h2>
-            <button className="text-[#006298] hover:text-[#008542] text-sm font-medium">
+        <div className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-semibold text-gray-900">Pesquisas em Destaque</h2>
+            <button className="text-[#006298] hover:text-[#008542] text-sm font-medium transition-colors">
               Ver todas
             </button>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-6">
             {featuredResearch.map((research, index) => (
               <ResearchCard key={index} {...research} />
             ))}
@@ -96,14 +93,14 @@ const Home = () => {
         </div>
 
         {/* News Section */}
-        <div>
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-xl font-semibold text-gray-900">Notícias Recentes</h2>
-            <button className="text-[#006298] hover:text-[#008542] text-sm font-medium">
+        <div className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-semibold text-gray-900">Notícias Recentes</h2>
+            <button className="text-[#006298] hover:text-[#008542] text-sm font-medium transition-colors">
               Ver todas
             </button>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-6">
             {recentNews.map((news, index) => (
               <NewsCard key={index} {...news} />
             ))}
