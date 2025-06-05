@@ -13,8 +13,7 @@ const Navbar = () => {
     { label: 'Início', path: '/' },
     { label: 'Laboratórios', path: '/laboratorios' },
     { label: 'Pesquisas', path: '/pesquisas' },
-    { label: 'Notícias', path: '/noticias' },
-    { label: 'Chat', path: '/chat' }
+    { label: 'Notícias', path: '/noticias' }
   ];
 
   const isActive = (path: string) => location.pathname === path;
