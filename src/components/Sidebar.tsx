@@ -68,22 +68,9 @@ const Sidebar = () => {
 
   return (
     <div className={`${isCollapsed ? 'w-16' : 'w-80'} bg-white border-l border-gray-200 h-full flex flex-col transition-all duration-300`}>
-      {/* Header */}
-      <div className="p-3 border-b border-gray-200 flex items-center justify-between">
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          className="text-gray-600 hover:bg-gray-100 p-1"
-        >
-          {isCollapsed ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-        </Button>
-        {!isCollapsed && <h2 className="text-lg font-semibold text-gray-900">Painel</h2>}
-      </div>
-
-      {/* User Section - Always visible when expanded */}
+      {/* User Section - Always at top when expanded */}
       {!isCollapsed && (
-        <div className="p-3 border-b border-gray-100">
+        <div className="p-4 border-b border-gray-100">
           <div 
             className="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer"
             onClick={() => navigate('/perfil')}
@@ -150,13 +137,13 @@ const Sidebar = () => {
         </div>
       )}
 
-      {/* Content */}
+      {/* Content - Main scrollable area */}
       <div className="flex-1 overflow-y-auto p-3">
         {isCollapsed ? (
           // Collapsed view - show simplified bubbles
-          <div className="space-y-2">
+          <div className="space-y-3">
             {/* User avatar */}
-            <div className="flex justify-center mb-4">
+            <div className="flex justify-center mb-6">
               <div className="w-10 h-10 bg-gradient-to-br from-[#008542] to-[#006298] rounded-full flex items-center justify-center text-white text-sm font-semibold">
                 DS
               </div>
@@ -185,123 +172,141 @@ const Sidebar = () => {
           </div>
         ) : (
           // Expanded view
-          <>
+          <div className="space-y-4">
             {activeTab === 'conversations' && (
-              <div className="space-y-1">
+              <div>
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs uppercase text-gray-500 font-medium">Grupos de Pesquisa</span>
                   <Plus className="w-4 h-4 text-gray-400 hover:text-gray-600 cursor-pointer" />
                 </div>
-                {sortedConversations.map((conv) => (
-                  <div
-                    key={conv.id}
-                    className={`flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer group ${
-                      location.pathname === '/chat' ? 'bg-gray-50' : ''
-                    } mb-1`}
-                  >
-                    <div className="w-10 h-10 bg-gradient-to-br from-[#008542] to-[#006298] rounded-full flex items-center justify-center text-white text-sm font-semibold mr-3 flex-shrink-0">
-                      {conv.name.charAt(0)}
-                    </div>
-                    <div className="flex-1 min-w-0" onClick={handleChatClick}>
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium truncate text-gray-900">{conv.name}</span>
-                        <div className="flex items-center space-x-2 ml-2">
-                          {conv.unread > 0 && (
-                            <span className="bg-[#fdc82f] text-black text-xs px-2 py-1 rounded-full font-medium">
-                              {conv.unread}
-                            </span>
-                          )}
-                          <Button
-                            variant="ghost"
-                            size="sm"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              togglePin(conv.id);
-                            }}
-                            className={`p-1 h-6 w-6 ${pinnedChats.includes(conv.id) ? 'text-[#fdc82f]' : 'text-gray-400'} hover:text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity`}
-                          >
-                            <Pin className="w-3 h-3" />
-                          </Button>
+                <div className="space-y-2">
+                  {sortedConversations.map((conv) => (
+                    <div
+                      key={conv.id}
+                      className={`flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer group ${
+                        location.pathname === '/chat' ? 'bg-gray-50' : ''
+                      }`}
+                    >
+                      <div className="w-10 h-10 bg-gradient-to-br from-[#008542] to-[#006298] rounded-full flex items-center justify-center text-white text-sm font-semibold mr-3 flex-shrink-0">
+                        {conv.name.charAt(0)}
+                      </div>
+                      <div className="flex-1 min-w-0" onClick={handleChatClick}>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm font-medium truncate text-gray-900">{conv.name}</span>
+                          <div className="flex items-center space-x-2 ml-2">
+                            {conv.unread > 0 && (
+                              <span className="bg-[#fdc82f] text-black text-xs px-2 py-1 rounded-full font-medium">
+                                {conv.unread}
+                              </span>
+                            )}
+                            <Button
+                              variant="ghost"
+                              size="sm"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                togglePin(conv.id);
+                              }}
+                              className={`p-1 h-6 w-6 ${pinnedChats.includes(conv.id) ? 'text-[#fdc82f]' : 'text-gray-400'} hover:text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity`}
+                            >
+                              <Pin className="w-3 h-3" />
+                            </Button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             )}
 
             {activeTab === 'contacts' && (
-              <div className="space-y-1">
+              <div>
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs uppercase text-gray-500 font-medium">Pesquisadores Online</span>
                 </div>
-                {sortedContacts.map((contact) => (
-                  <div
-                    key={contact.id}
-                    onClick={handleChatClick}
-                    className="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer mb-1"
-                  >
-                    <div className="relative mr-3 flex-shrink-0">
-                      <div className="w-10 h-10 bg-gradient-to-br from-[#006298] to-[#008542] rounded-full flex items-center justify-center text-sm font-semibold text-white">
-                        {contact.name.split(' ').map(n => n[0]).join('')}
+                <div className="space-y-2">
+                  {sortedContacts.map((contact) => (
+                    <div
+                      key={contact.id}
+                      onClick={handleChatClick}
+                      className="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer"
+                    >
+                      <div className="relative mr-3 flex-shrink-0">
+                        <div className="w-10 h-10 bg-gradient-to-br from-[#006298] to-[#008542] rounded-full flex items-center justify-center text-sm font-semibold text-white">
+                          {contact.name.split(' ').map(n => n[0]).join('')}
+                        </div>
+                        <div className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 border-2 border-white rounded-full ${
+                          contact.status === 'online' ? 'bg-[#008542]' : 
+                          contact.status === 'away' ? 'bg-[#fdc82f]' : 'bg-gray-400'
+                        }`} />
                       </div>
-                      <div className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 border-2 border-white rounded-full ${
-                        contact.status === 'online' ? 'bg-[#008542]' : 
-                        contact.status === 'away' ? 'bg-[#fdc82f]' : 'bg-gray-400'
-                      }`} />
+                      <div className="flex-1 min-w-0">
+                        <div className="text-sm font-medium truncate text-gray-900">{contact.name}</div>
+                        <div className="text-xs text-gray-500 truncate">{contact.lab}</div>
+                      </div>
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="text-sm font-medium truncate text-gray-900">{contact.name}</div>
-                      <div className="text-xs text-gray-500 truncate">{contact.lab}</div>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             )}
 
             {activeTab === 'requests' && (
-              <div className="space-y-1">
+              <div>
                 <div className="flex items-center justify-between mb-3">
                   <span className="text-xs uppercase text-gray-500 font-medium">Solicitações Pendentes</span>
                 </div>
-                {requests.map((request) => (
-                  <div
-                    key={request.id}
-                    className="border border-gray-200 rounded-lg p-3 hover:bg-gray-50 transition-colors mb-2"
-                  >
-                    <div className="flex items-start justify-between mb-2">
-                      <div className="flex-1">
-                        <h4 className="font-medium text-sm">{request.researcher}</h4>
-                        <p className="text-xs text-gray-600 mb-1">{request.project}</p>
-                        <span className="text-xs text-gray-400">{request.time}</span>
+                <div className="space-y-3">
+                  {requests.map((request) => (
+                    <div
+                      key={request.id}
+                      className="border border-gray-200 rounded-lg p-3 hover:bg-gray-50 transition-colors"
+                    >
+                      <div className="flex items-start justify-between mb-2">
+                        <div className="flex-1">
+                          <h4 className="font-medium text-sm">{request.researcher}</h4>
+                          <p className="text-xs text-gray-600 mb-1">{request.project}</p>
+                          <span className="text-xs text-gray-400">{request.time}</span>
+                        </div>
+                        <div className="flex items-center">
+                          {request.status === 'pending' ? (
+                            <Clock className="w-4 h-4 text-[#fdc82f]" />
+                          ) : request.status === 'approved' ? (
+                            <CheckCircle className="w-4 h-4 text-[#008542]" />
+                          ) : (
+                            <XCircle className="w-4 h-4 text-red-500" />
+                          )}
+                        </div>
                       </div>
-                      <div className="flex items-center">
-                        {request.status === 'pending' ? (
-                          <Clock className="w-4 h-4 text-[#fdc82f]" />
-                        ) : request.status === 'approved' ? (
-                          <CheckCircle className="w-4 h-4 text-[#008542]" />
-                        ) : (
-                          <XCircle className="w-4 h-4 text-red-500" />
-                        )}
-                      </div>
+                      
+                      {request.status === 'pending' && (
+                        <div className="flex space-x-2">
+                          <Button size="sm" variant="outline" className="flex-1 text-xs h-7 border-[#008542] text-[#008542] hover:bg-[#008542] hover:text-white">
+                            Aprovar
+                          </Button>
+                          <Button size="sm" variant="outline" className="flex-1 text-xs h-7">
+                            Recusar
+                          </Button>
+                        </div>
+                      )}
                     </div>
-                    
-                    {request.status === 'pending' && (
-                      <div className="flex space-x-2">
-                        <Button size="sm" variant="outline" className="flex-1 text-xs h-7 border-[#008542] text-[#008542] hover:bg-[#008542] hover:text-white">
-                          Aprovar
-                        </Button>
-                        <Button size="sm" variant="outline" className="flex-1 text-xs h-7">
-                          Recusar
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             )}
-          </>
+          </div>
         )}
+      </div>
+
+      {/* Collapse/Expand Button - Moved to bottom */}
+      <div className="p-3 border-t border-gray-100">
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          className="w-full text-gray-600 hover:bg-gray-100 justify-center"
+        >
+          {isCollapsed ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
+        </Button>
       </div>
     </div>
   );
