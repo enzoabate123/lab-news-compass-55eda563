@@ -31,19 +31,19 @@ const Chat = () => {
   };
 
   return (
-    <div className="flex h-[calc(100vh-73px)]">
+    <div className="flex h-[calc(100vh-73px)] bg-white">
       {/* Chat List */}
-      <div className="w-80 border-r border-gray-200 bg-white">
-        <div className="p-4 border-b border-gray-200">
+      <Card className="w-80 rounded-none border-r border-l-0 border-t-0 border-b-0">
+        <CardHeader className="p-4 border-b">
           <h2 className="text-lg font-semibold text-gray-900">Conversas</h2>
-        </div>
-        <div className="overflow-y-auto">
+        </CardHeader>
+        <CardContent className="p-0 overflow-y-auto">
           {chats.map((chat) => (
             <div
               key={chat.id}
               onClick={() => setSelectedChat(chat.id)}
-              className={`p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 ${
-                selectedChat === chat.id ? 'bg-[#008542]/10 border-l-4 border-l-[#008542]' : ''
+              className={`p-4 border-b border-gray-100 cursor-pointer hover:bg-gray-50 transition-colors ${
+                selectedChat === chat.id ? 'bg-gradient-to-r from-[#008542]/10 to-[#006298]/10 border-l-4 border-l-[#008542]' : ''
               }`}
             >
               <div className="flex items-center justify-between mb-1">
@@ -60,87 +60,93 @@ const Chat = () => {
               <p className="text-sm text-gray-600 truncate">{chat.lastMessage}</p>
             </div>
           ))}
-        </div>
-      </div>
+        </CardContent>
+      </Card>
 
       {/* Chat Area */}
       <div className="flex-1 flex flex-col">
         {/* Chat Header */}
-        <div className="p-4 border-b border-gray-200 bg-white flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#008542] to-[#006298] rounded-full flex items-center justify-center text-white font-semibold">
-              LA
+        <Card className="rounded-none border-l-0 border-r-0 border-t-0">
+          <CardContent className="p-4 flex items-center justify-between">
+            <div className="flex items-center space-x-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-[#008542] to-[#006298] rounded-full flex items-center justify-center text-white font-semibold">
+                LA
+              </div>
+              <div>
+                <h3 className="font-medium text-gray-900">Laboratório Alpha</h3>
+                <p className="text-sm text-gray-500">8 membros online</p>
+              </div>
             </div>
-            <div>
-              <h3 className="font-medium text-gray-900">Laboratório Alpha</h3>
-              <p className="text-sm text-gray-500">8 membros online</p>
+            <div className="flex items-center space-x-2">
+              <Button variant="ghost" size="sm" className="hover:bg-[#006298]/20">
+                <Phone className="w-4 h-4" />
+              </Button>
+              <Button variant="ghost" size="sm" className="hover:bg-[#006298]/20">
+                <Video className="w-4 h-4" />
+              </Button>
+              <Button variant="ghost" size="sm" className="hover:bg-[#006298]/20">
+                <MoreVertical className="w-4 h-4" />
+              </Button>
             </div>
-          </div>
-          <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="sm" className="hover:bg-[#006298]/20">
-              <Phone className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost" size="sm" className="hover:bg-[#006298]/20">
-              <Video className="w-4 h-4" />
-            </Button>
-            <Button variant="ghost" size="sm" className="hover:bg-[#006298]/20">
-              <MoreVertical className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
+          </CardContent>
+        </Card>
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
+        <div className="flex-1 overflow-y-auto p-6 bg-gray-50">
           <div className="space-y-4">
             {messages.map((msg) => (
               <div
                 key={msg.id}
                 className={`flex ${msg.isMe ? 'justify-end' : 'justify-start'}`}
               >
-                <div
-                  className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
+                <Card
+                  className={`max-w-xs lg:max-w-md ${
                     msg.isMe
-                      ? 'bg-[#008542] text-white'
-                      : 'bg-white border border-gray-200'
+                      ? 'bg-gradient-to-r from-[#008542] to-[#006298] text-white border-none'
+                      : 'bg-white border-gray-200'
                   }`}
                 >
-                  {!msg.isMe && (
-                    <p className="text-xs font-medium text-[#006298] mb-1">{msg.sender}</p>
-                  )}
-                  <p className={`text-sm ${msg.isMe ? 'text-white' : 'text-gray-900'}`}>
-                    {msg.content}
-                  </p>
-                  <p className={`text-xs mt-1 ${msg.isMe ? 'text-green-100' : 'text-gray-500'}`}>
-                    {msg.time}
-                  </p>
-                </div>
+                  <CardContent className="p-4">
+                    {!msg.isMe && (
+                      <p className="text-xs font-medium text-[#006298] mb-1">{msg.sender}</p>
+                    )}
+                    <p className={`text-sm ${msg.isMe ? 'text-white' : 'text-gray-900'}`}>
+                      {msg.content}
+                    </p>
+                    <p className={`text-xs mt-1 ${msg.isMe ? 'text-green-100' : 'text-gray-500'}`}>
+                      {msg.time}
+                    </p>
+                  </CardContent>
+                </Card>
               </div>
             ))}
           </div>
         </div>
 
         {/* Message Input */}
-        <div className="p-4 bg-white border-t border-gray-200">
-          <div className="flex items-center space-x-2">
-            <Button variant="ghost" size="sm" className="hover:bg-[#006298]/20">
-              <Paperclip className="w-4 h-4" />
-            </Button>
-            <Input
-              type="text"
-              placeholder="Digite sua mensagem..."
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
-              className="flex-1 focus:ring-[#008542] focus:border-[#008542]"
-            />
-            <Button 
-              onClick={handleSendMessage}
-              className="bg-[#008542] hover:bg-[#006835] text-white"
-            >
-              <Send className="w-4 h-4" />
-            </Button>
-          </div>
-        </div>
+        <Card className="rounded-none border-l-0 border-r-0 border-b-0">
+          <CardContent className="p-4">
+            <div className="flex items-center space-x-2">
+              <Button variant="ghost" size="sm" className="hover:bg-[#006298]/20">
+                <Paperclip className="w-4 h-4" />
+              </Button>
+              <Input
+                type="text"
+                placeholder="Digite sua mensagem..."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
+                className="flex-1 focus:ring-[#008542] focus:border-[#008542]"
+              />
+              <Button 
+                onClick={handleSendMessage}
+                className="bg-gradient-to-r from-[#008542] to-[#006298] hover:from-[#006835] hover:to-[#004a7a] text-white"
+              >
+                <Send className="w-4 h-4" />
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

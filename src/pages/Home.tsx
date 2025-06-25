@@ -19,21 +19,24 @@ const Home = () => {
       description: 'Estudo inovador sobre a identificação precoce de doenças cardiovasculares através de biomarcadores específicos.',
       researchers: 8,
       lastUpdate: '2 dias atrás',
-      category: 'Cardiologia'
+      category: 'Cardiologia',
+      progress: 78
     },
     {
       title: 'Terapia Genética Avançada',
       description: 'Desenvolvimento de novas técnicas de terapia genética para tratamento de doenças raras.',
       researchers: 12,
       lastUpdate: '1 dia atrás',
-      category: 'Genética'
+      category: 'Genética',
+      progress: 65
     },
     {
       title: 'Nanotecnologia Médica',
       description: 'Aplicação de nanotecnologia no desenvolvimento de sistemas de entrega de medicamentos.',
       researchers: 6,
       lastUpdate: '3 dias atrás',
-      category: 'Nanotecnologia'
+      category: 'Nanotecnologia',
+      progress: 45
     }
   ];
 
