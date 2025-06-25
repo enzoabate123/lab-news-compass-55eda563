@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Users, MessageCircle, Settings, Plus, ChevronLeft, ChevronRight, Pin } from 'lucide-react';
+import { Users, MessageCircle, User, Plus, ChevronLeft, ChevronRight, Pin, Bell, Clock, CheckCircle, XCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate, useLocation } from 'react-router-dom';
 
@@ -24,6 +24,28 @@ const Sidebar = () => {
     { id: 3, name: 'Prof. João Santos', status: 'away', lab: 'Física Quântica' }
   ];
 
+  const requests = [
+    {
+      id: 1,
+      researcher: 'Dr. Carlos Lima',
+      project: 'Análise de Biomarcadores',
+      time: '2h atrás',
+      status: 'pending'
+    },
+    {
+      id: 2,
+      researcher: 'Dra. Sofia Mendes',
+      project: 'Estudo Genético',
+      time: '5h atrás',
+      status: 'pending'
+    }
+  ];
+
+  const notifications = [
+    { id: 1, title: 'Nova pesquisa publicada', message: 'Análise de Biomarcadores foi atualizada', time: '2h atrás' },
+    { id: 2, title: 'Convite para laboratório', message: 'Dr. Silva te convidou para Biotecnologia Avançada', time: '4h atrás' }
+  ];
+
   // Organizar chats: primeiro os fixados (alfabético), depois os outros (alfabético)
   const sortedConversations = [
     ...conversations.filter(conv => pinnedChats.includes(conv.id)).sort((a, b) => a.name.localeCompare(b.name)),
@@ -45,19 +67,43 @@ const Sidebar = () => {
   };
 
   return (
-    <div className={`${isCollapsed ? 'w-16' : 'w-64'} bg-white border-r border-gray-200 h-screen flex flex-col transition-all duration-300`}>
+    <div className={`${isCollapsed ? 'w-16' : 'w-80'} bg-white border-l border-gray-200 h-full flex flex-col transition-all duration-300`}>
       {/* Header */}
-      <div className="p-4 border-b border-gray-200 flex items-center justify-between">
-        {!isCollapsed && <h2 className="text-lg font-semibold text-gray-900">Aba</h2>}
+      <div className="p-3 border-b border-gray-200 flex items-center justify-between">
         <Button
           variant="ghost"
           size="sm"
           onClick={() => setIsCollapsed(!isCollapsed)}
           className="text-gray-600 hover:bg-gray-100 p-1"
         >
-          {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+          {isCollapsed ? <ChevronLeft className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
         </Button>
+        {!isCollapsed && <h2 className="text-lg font-semibold text-gray-900">Painel</h2>}
       </div>
+
+      {/* User Section - Always visible when expanded */}
+      {!isCollapsed && (
+        <div className="p-3 border-b border-gray-100">
+          <div 
+            className="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer"
+            onClick={() => navigate('/perfil')}
+          >
+            <div className="w-10 h-10 bg-gradient-to-br from-[#008542] to-[#006298] rounded-full flex items-center justify-center text-white text-sm font-semibold mr-3">
+              DS
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="text-sm font-medium text-gray-900">Dr. Marina Santos</div>
+              <div className="text-xs text-gray-500">Pesquisadora Principal</div>
+            </div>
+            <div className="relative">
+              <Bell className="w-4 h-4 text-gray-400" />
+              <span className="absolute -top-1 -right-1 bg-[#fdc82f] text-black text-xs rounded-full w-4 h-4 flex items-center justify-center font-medium">
+                2
+              </span>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Tab Controls - Hidden when collapsed */}
       {!isCollapsed && (
@@ -88,6 +134,19 @@ const Sidebar = () => {
             <Users className="w-4 h-4 mr-1" />
             Contatos
           </Button>
+          <Button
+            variant={activeTab === 'requests' ? 'default' : 'ghost'}
+            size="sm"
+            onClick={() => setActiveTab('requests')}
+            className={`flex-1 text-xs ${
+              activeTab === 'requests' 
+                ? 'bg-gradient-to-r from-[#008542] to-[#006298] text-white hover:from-[#006835] hover:to-[#004a7a]' 
+                : 'text-gray-600 hover:bg-gray-100'
+            }`}
+          >
+            <Clock className="w-4 h-4 mr-1" />
+            Solicitações
+          </Button>
         </div>
       )}
 
@@ -96,7 +155,14 @@ const Sidebar = () => {
         {isCollapsed ? (
           // Collapsed view - show simplified bubbles
           <div className="space-y-2">
-            {sortedConversations.map((conv) => (
+            {/* User avatar */}
+            <div className="flex justify-center mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-[#008542] to-[#006298] rounded-full flex items-center justify-center text-white text-sm font-semibold">
+                DS
+              </div>
+            </div>
+            {/* Conversations */}
+            {sortedConversations.slice(0, 4).map((conv) => (
               <div
                 key={conv.id}
                 onClick={handleChatClick}
@@ -192,19 +258,51 @@ const Sidebar = () => {
                 ))}
               </div>
             )}
+
+            {activeTab === 'requests' && (
+              <div className="space-y-1">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs uppercase text-gray-500 font-medium">Solicitações Pendentes</span>
+                </div>
+                {requests.map((request) => (
+                  <div
+                    key={request.id}
+                    className="border border-gray-200 rounded-lg p-3 hover:bg-gray-50 transition-colors mb-2"
+                  >
+                    <div className="flex items-start justify-between mb-2">
+                      <div className="flex-1">
+                        <h4 className="font-medium text-sm">{request.researcher}</h4>
+                        <p className="text-xs text-gray-600 mb-1">{request.project}</p>
+                        <span className="text-xs text-gray-400">{request.time}</span>
+                      </div>
+                      <div className="flex items-center">
+                        {request.status === 'pending' ? (
+                          <Clock className="w-4 h-4 text-[#fdc82f]" />
+                        ) : request.status === 'approved' ? (
+                          <CheckCircle className="w-4 h-4 text-[#008542]" />
+                        ) : (
+                          <XCircle className="w-4 h-4 text-red-500" />
+                        )}
+                      </div>
+                    </div>
+                    
+                    {request.status === 'pending' && (
+                      <div className="flex space-x-2">
+                        <Button size="sm" variant="outline" className="flex-1 text-xs h-7 border-[#008542] text-[#008542] hover:bg-[#008542] hover:text-white">
+                          Aprovar
+                        </Button>
+                        <Button size="sm" variant="outline" className="flex-1 text-xs h-7">
+                          Recusar
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
           </>
         )}
       </div>
-
-      {/* Bottom Settings - Hidden when collapsed */}
-      {!isCollapsed && (
-        <div className="p-4 border-t border-gray-200">
-          <Button variant="ghost" size="sm" className="w-full justify-start text-gray-600 hover:bg-gray-100">
-            <Settings className="w-4 h-4 mr-2" />
-            Configurações
-          </Button>
-        </div>
-      )}
     </div>
   );
 };
