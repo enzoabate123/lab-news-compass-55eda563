@@ -18,9 +18,9 @@ const Navbar = () => {
   ];
 
   const notifications = [
-    { id: 1, title: 'Nova pesquisa publicada', message: 'Análise de Biomarcadores foi atualizada', time: '2h atrás' },
-    { id: 2, title: 'Convite para laboratório', message: 'Dr. Silva te convidou para Biotecnologia Avançada', time: '4h atrás' },
-    { id: 3, title: 'Comentário em pesquisa', message: 'Nova resposta em Terapia Genética', time: '1d atrás' }
+    { id: 1, title: 'Nova pesquisa publicada', message: 'Análise de Reservatórios foi atualizada', time: '2h atrás' },
+    { id: 2, title: 'Convite para laboratório', message: 'Dr. Silva te convidou para Geoquímica Avançada', time: '4h atrás' },
+    { id: 3, title: 'Comentário em pesquisa', message: 'Nova resposta em Exploração Offshore', time: '1d atrás' }
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -53,7 +53,7 @@ const Navbar = () => {
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
             <Input
               type="text"
-              placeholder="Buscar laboratórios, pesquisas, notícias..."
+              placeholder="Buscar laboratórios, pesquisas, notícias sobre petróleo, gás e mineração..."
               className="pl-10 pr-4 py-2 w-full focus:ring-[#008542] focus:border-[#008542]"
             />
           </div>

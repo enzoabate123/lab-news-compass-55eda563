@@ -7,36 +7,36 @@ import { Button } from '@/components/ui/button';
 const LaboratorioDetalhes = () => {
   const laboratorio = {
     id: 1,
-    name: 'Laboratório de Biotecnologia Avançada',
-    description: 'Centro de excelência em pesquisas de engenharia genética e desenvolvimento de terapias inovadoras. Nosso laboratório está na vanguarda da pesquisa biotecnológica, desenvolvendo soluções que podem revolucionar o tratamento de doenças genéticas raras.',
+    name: 'Laboratório de Geoquímica Avançada',
+    description: 'Centro de excelência em análises geoquímicas de rochas sedimentares e caracterização de reservatórios petrolíferos. Nosso laboratório está na vanguarda da pesquisa em exploração de hidrocarbonetos, desenvolvendo soluções que podem revolucionar a indústria de petróleo e gás.',
     location: 'São Paulo, SP',
     founded: '2018',
-    director: 'Dr. Maria Silva',
-    email: 'contato@biotecavancada.br',
-    website: 'www.biotecavancada.br',
+    director: 'Dr. Carlos Pereira',
+    email: 'contato@geoquimicaavancada.br',
+    website: 'www.geoquimicaavancada.br',
     totalResearchers: 25,
     activeProjects: 12,
     publications: 89
   };
 
   const researchers = [
-    { id: 1, name: 'Dr. Maria Silva', role: 'Diretora', avatar: 'MS' },
-    { id: 2, name: 'Prof. João Santos', role: 'Pesquisador Sênior', avatar: 'JS' },
-    { id: 3, name: 'Dra. Ana Costa', role: 'Pesquisadora Principal', avatar: 'AC' },
-    { id: 4, name: 'Dr. Carlos Lima', role: 'Pós-Doutor', avatar: 'CL' },
-    { id: 5, name: 'Msc. Sofia Mendes', role: 'Doutoranda', avatar: 'SM' }
+    { id: 1, name: 'Dr. Carlos Pereira', role: 'Diretor', avatar: 'CP' },
+    { id: 2, name: 'Prof. Ana Rocha', role: 'Pesquisadora Sênior', avatar: 'AR' },
+    { id: 3, name: 'Dr. João Silva', role: 'Pesquisador Principal', avatar: 'JS' },
+    { id: 4, name: 'Dra. Marina Costa', role: 'Pós-Doutora', avatar: 'MC' },
+    { id: 5, name: 'Msc. Eduardo Lima', role: 'Doutorando', avatar: 'EL' }
   ];
 
   const featuredResearch = [
     {
-      title: 'Terapia Genética para Doenças Raras',
-      description: 'Desenvolvimento de vetores virais seguros para correção genética',
+      title: 'Caracterização de Reservatórios do Pré-Sal',
+      description: 'Análise detalhada de rochas carbonáticas para otimização da produção',
       status: 'Em destaque',
       progress: 85
     },
     {
-      title: 'Biomarcadores de Câncer',
-      description: 'Identificação de novos biomarcadores para diagnóstico precoce',
+      title: 'Geoquímica de Folhelhos Geradores',
+      description: 'Identificação de biomarcadores em rochas geradoras de petróleo',
       status: 'Publicado',
       progress: 100
     }
@@ -44,18 +44,18 @@ const LaboratorioDetalhes = () => {
 
   const ongoingResearch = [
     {
-      title: 'Edição Genética CRISPR',
-      description: 'Aplicação de CRISPR-Cas9 em células-tronco',
+      title: 'Análise Isotópica de Hidrocarbonetos',
+      description: 'Aplicação de isótopos estáveis na correlação óleo-rocha',
       progress: 45
     },
     {
-      title: 'Análise Proteômica',
-      description: 'Estudo do proteoma em doenças neurodegenerativas',
+      title: 'Modelagem Geoquímica 3D',
+      description: 'Desenvolvimento de modelos tridimensionais de bacias sedimentares',
       progress: 67
     },
     {
-      title: 'Medicina Regenerativa',
-      description: 'Desenvolvimento de scaffolds bioativos',
+      title: 'Biomarcadores Avançados',
+      description: 'Identificação de novos biomarcadores em óleos pesados',
       progress: 30
     }
   ];

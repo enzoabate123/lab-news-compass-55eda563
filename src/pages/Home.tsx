@@ -15,45 +15,45 @@ const Home = () => {
 
   const featuredResearch = [
     {
-      title: 'Análise de Biomarcadores Cardíacos',
-      description: 'Estudo inovador sobre a identificação precoce de doenças cardiovasculares através de biomarcadores específicos.',
+      title: 'Análise de Reservatórios Petrolíferos',
+      description: 'Estudo avançado sobre caracterização de reservatórios e otimização de produção de petróleo e gás natural.',
       researchers: 8,
       lastUpdate: '2 dias atrás',
-      category: 'Cardiologia',
+      category: 'Petróleo e Gás',
       progress: 78
     },
     {
-      title: 'Terapia Genética Avançada',
-      description: 'Desenvolvimento de novas técnicas de terapia genética para tratamento de doenças raras.',
+      title: 'Exploração Mineral Sustentável',
+      description: 'Desenvolvimento de técnicas inovadoras para exploração mineral com menor impacto ambiental.',
       researchers: 12,
       lastUpdate: '1 dia atrás',
-      category: 'Genética',
+      category: 'Mineração',
       progress: 65
     },
     {
-      title: 'Nanotecnologia Médica',
-      description: 'Aplicação de nanotecnologia no desenvolvimento de sistemas de entrega de medicamentos.',
+      title: 'Geoquímica de Rochas Sedimentares',
+      description: 'Análise detalhada da composição geoquímica de formações rochosas para identificação de hidrocarbonetos.',
       researchers: 6,
       lastUpdate: '3 dias atrás',
-      category: 'Nanotecnologia',
+      category: 'Geoquímica',
       progress: 45
     }
   ];
 
   const recentNews = [
     {
-      title: 'Avanços em Inteligência Artificial Médica',
-      summary: 'Nova pesquisa demonstra eficácia de 95% em diagnósticos automatizados de câncer.',
-      source: 'Nature Medicine',
+      title: 'Descoberta de Novo Campo de Petróleo',
+      summary: 'Pesquisadores identificam reservatório com potencial de 2 bilhões de barris na Bacia de Santos.',
+      source: 'Petro Journal',
       time: '2h atrás',
-      category: 'IA Médica'
+      category: 'Exploração'
     },
     {
-      title: 'Breakthrough em Vacinas de mRNA',
-      summary: 'Cientistas desenvolvem nova plataforma que pode acelerar desenvolvimento de vacinas.',
-      source: 'Science Journal',
+      title: 'Avanços em Fraturamento Hidráulico',
+      summary: 'Nova técnica reduz impacto ambiental em 40% mantendo eficiência na extração de gás de xisto.',
+      source: 'Energy Science',
       time: '4h atrás',
-      category: 'Vacinas'
+      category: 'Tecnologia'
     }
   ];
 

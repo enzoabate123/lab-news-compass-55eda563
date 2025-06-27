@@ -12,55 +12,55 @@ const Laboratorios = () => {
   const laboratories = [
     {
       id: 1,
-      name: 'Laboratório de Biotecnologia Avançada',
-      description: 'Especializado em pesquisas de engenharia genética e desenvolvimento de terapias inovadoras.',
+      name: 'Laboratório de Geoquímica Avançada',
+      description: 'Especializado em análises geoquímicas de rochas sedimentares e caracterização de reservatórios petrolíferos.',
       location: 'São Paulo, SP',
       researchers: 25,
       projects: 12,
       founded: '2018',
-      category: 'Biotecnologia',
+      category: 'Geoquímica',
       image: '/placeholder.svg',
       status: 'Ativo'
     },
     {
       id: 2,
-      name: 'Centro de Pesquisa em IA Médica',
-      description: 'Desenvolvimento de algoritmos de inteligência artificial para diagnósticos médicos precisos.',
+      name: 'Centro de Pesquisa em Exploração Offshore',
+      description: 'Desenvolvimento de tecnologias para exploração de petróleo e gás em águas profundas.',
       location: 'Rio de Janeiro, RJ',
       researchers: 18,
       projects: 8,
       founded: '2020',
-      category: 'Inteligência Artificial',
+      category: 'Exploração',
       image: '/placeholder.svg',
       status: 'Ativo'
     },
     {
       id: 3,
-      name: 'Instituto de Nanotecnologia',
-      description: 'Pesquisa e desenvolvimento de materiais nanoestruturados para aplicações médicas.',
+      name: 'Instituto de Mineralogia Aplicada',
+      description: 'Pesquisa e desenvolvimento em caracterização mineral e processamento de minérios.',
       location: 'Campinas, SP',
       researchers: 32,
       projects: 15,
       founded: '2015',
-      category: 'Nanotecnologia',
+      category: 'Mineralogia',
       image: '/placeholder.svg',
       status: 'Ativo'
     },
     {
       id: 4,
-      name: 'Lab de Farmacologia Molecular',
-      description: 'Estudos avançados em desenvolvimento de medicamentos e terapias moleculares.',
+      name: 'Lab de Engenharia de Reservatórios',
+      description: 'Estudos avançados em simulação e otimização de produção de hidrocarbonetos.',
       location: 'Belo Horizonte, MG',
       researchers: 22,
       projects: 10,
       founded: '2017',
-      category: 'Farmacologia',
+      category: 'Engenharia',
       image: '/placeholder.svg',
       status: 'Ativo'
     }
   ];
 
-  const categories = ['all', 'Biotecnologia', 'Inteligência Artificial', 'Nanotecnologia', 'Farmacologia'];
+  const categories = ['all', 'Geoquímica', 'Exploração', 'Mineralogia', 'Engenharia'];
 
   const filteredLabs = laboratories.filter(lab => {
     const matchesSearch = lab.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -75,7 +75,7 @@ const Laboratorios = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Laboratórios</h1>
-          <p className="text-gray-600">Explore laboratórios de pesquisa registrados na plataforma</p>
+          <p className="text-gray-600">Explore laboratórios de pesquisa em petróleo, gás e mineração</p>
         </div>
         <Button className="bg-blue-600 hover:bg-blue-700">
           <Plus className="w-4 h-4 mr-2" />

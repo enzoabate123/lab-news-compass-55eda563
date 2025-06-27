@@ -12,66 +12,66 @@ const Pesquisas = () => {
   const researches = [
     {
       id: 1,
-      title: 'Análise de Biomarcadores Cardíacos',
-      description: 'Estudo inovador sobre identificação precoce de doenças cardiovasculares através de biomarcadores específicos no sangue.',
-      lab: 'Laboratório de Biotecnologia Avançada',
+      title: 'Análise de Reservatórios Carbonáticos',
+      description: 'Estudo detalhado sobre caracterização petrofísica de reservatórios carbonáticos no pré-sal brasileiro.',
+      lab: 'Laboratório de Geoquímica Avançada',
       researchers: 8,
       startDate: '2024-01-15',
       status: 'Em andamento',
       progress: 78,
-      category: 'Cardiologia',
+      category: 'Geologia',
       publications: 3,
       funding: 'R$ 2.5M'
     },
     {
       id: 2,
-      title: 'Terapia Genética para Doenças Raras',
-      description: 'Desenvolvimento de novas técnicas de terapia genética utilizando CRISPR para tratamento de doenças genéticas raras.',
-      lab: 'Centro de Pesquisa Genética',
+      title: 'Exploração de Gás de Xisto',
+      description: 'Desenvolvimento de técnicas avançadas de fraturamento hidráulico para exploração sustentável de gás de xisto.',
+      lab: 'Centro de Pesquisa em Exploração',
       researchers: 12,
       startDate: '2023-08-20',
       status: 'Em andamento',
       progress: 92,
-      category: 'Genética',
+      category: 'Exploração',
       publications: 7,
       funding: 'R$ 4.2M'
     },
     {
       id: 3,
-      title: 'IA para Diagnóstico de Câncer',
-      description: 'Sistema de inteligência artificial para detecção precoce e diagnóstico automatizado de diferentes tipos de câncer.',
-      lab: 'Centro de Pesquisa em IA Médica',
+      title: 'Processamento Mineral Sustentável',
+      description: 'Tecnologias inovadoras para processamento de minérios com redução do impacto ambiental.',
+      lab: 'Instituto de Mineralogia Aplicada',
       researchers: 15,
       startDate: '2023-12-01',
       status: 'Em andamento',
       progress: 65,
-      category: 'Inteligência Artificial',
+      category: 'Mineralogia',
       publications: 2,
       funding: 'R$ 3.8M'
     },
     {
       id: 4,
-      title: 'Nanotecnologia em Drug Delivery',
-      description: 'Desenvolvimento de nanopartículas para entrega direcionada de medicamentos oncológicos.',
-      lab: 'Instituto de Nanotecnologia',
+      title: 'Simulação de Fluxo em Reservatórios',
+      description: 'Modelagem computacional avançada para otimização da produção de hidrocarbonetos.',
+      lab: 'Lab de Engenharia de Reservatórios',
       researchers: 10,
       startDate: '2024-02-10',
       status: 'Iniciando',
       progress: 25,
-      category: 'Nanotecnologia',
+      category: 'Engenharia',
       publications: 1,
       funding: 'R$ 1.9M'
     },
     {
       id: 5,
-      title: 'Vacinas de RNA Mensageiro',
-      description: 'Pesquisa sobre desenvolvimento de vacinas utilizando tecnologia de RNA mensageiro para doenças emergentes.',
-      lab: 'Lab de Farmacologia Molecular',
+      title: 'Caracterização Geoquímica de Folhelhos',
+      description: 'Análise detalhada da composição geoquímica de formações de folhelhos ricos em matéria orgânica.',
+      lab: 'Laboratório de Geoquímica Avançada',
       researchers: 20,
       startDate: '2023-06-15',
       status: 'Concluído',
       progress: 100,
-      category: 'Farmacologia',
+      category: 'Geoquímica',
       publications: 12,
       funding: 'R$ 5.5M'
     }
@@ -103,7 +103,7 @@ const Pesquisas = () => {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold text-gray-900">Pesquisas</h1>
-          <p className="text-gray-600">Acompanhe projetos de pesquisa em andamento e concluídos</p>
+          <p className="text-gray-600">Acompanhe projetos de pesquisa em petróleo, gás e mineração</p>
         </div>
         <Button className="bg-blue-600 hover:bg-blue-700">
           <Plus className="w-4 h-4 mr-2" />
