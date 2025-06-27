@@ -24,28 +24,6 @@ const Sidebar = () => {
     { id: 3, name: 'Prof. João Mineral', status: 'away', lab: 'Mineralogia' }
   ];
 
-  const requests = [
-    {
-      id: 1,
-      researcher: 'Dr. Eduardo Silva',
-      project: 'Análise de Reservatórios',
-      time: '2h atrás',
-      status: 'pending'
-    },
-    {
-      id: 2,
-      researcher: 'Dra. Marina Costa',
-      project: 'Exploração Offshore',
-      time: '5h atrás',
-      status: 'pending'
-    }
-  ];
-
-  const notifications = [
-    { id: 1, title: 'Novo relatório disponível', message: 'Análise de Reservatórios foi atualizada', time: '2h atrás' },
-    { id: 2, title: 'Convite para laboratório', message: 'Dr. Silva te convidou para Geoquímica Avançada', time: '4h atrás' }
-  ];
-
   // Organizar chats: primeiro os fixados (alfabético), depois os outros (alfabético)
   const sortedConversations = [
     ...conversations.filter(conv => pinnedChats.includes(conv.id)).sort((a, b) => a.name.localeCompare(b.name)),
@@ -96,19 +74,6 @@ const Sidebar = () => {
           >
             <Users className="w-4 h-4 mr-1 flex-shrink-0" />
             <span className="truncate">Contatos</span>
-          </Button>
-          <Button
-            variant={activeTab === 'requests' ? 'default' : 'ghost'}
-            size="sm"
-            onClick={() => setActiveTab('requests')}
-            className={`flex-1 text-xs min-w-0 ${
-              activeTab === 'requests' 
-                ? 'bg-gradient-to-r from-[#008542] to-[#006298] text-white hover:from-[#006835] hover:to-[#004a7a]' 
-                : 'text-gray-600 hover:bg-gray-100'
-            }`}
-          >
-            <Clock className="w-4 h-4 mr-1 flex-shrink-0" />
-            <span className="truncate">Solicitações</span>
           </Button>
         </div>
       )}
@@ -214,50 +179,6 @@ const Sidebar = () => {
                         <div className="text-sm font-medium truncate text-gray-900">{contact.name}</div>
                         <div className="text-xs text-gray-500 truncate">{contact.lab}</div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {activeTab === 'requests' && (
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs uppercase text-gray-500 font-medium">Solicitações de Acesso</span>
-                </div>
-                <div className="space-y-3">
-                  {requests.map((request) => (
-                    <div
-                      key={request.id}
-                      className="border border-gray-200 rounded-lg p-3 hover:bg-gray-50 transition-colors"
-                    >
-                      <div className="flex items-start justify-between mb-2">
-                        <div className="flex-1">
-                          <h4 className="font-medium text-sm">{request.researcher}</h4>
-                          <p className="text-xs text-gray-600 mb-1">{request.project}</p>
-                          <span className="text-xs text-gray-400">{request.time}</span>
-                        </div>
-                        <div className="flex items-center">
-                          {request.status === 'pending' ? (
-                            <Clock className="w-4 h-4 text-[#fdc82f]" />
-                          ) : request.status === 'approved' ? (
-                            <CheckCircle className="w-4 h-4 text-[#008542]" />
-                          ) : (
-                            <XCircle className="w-4 h-4 text-red-500" />
-                          )}
-                        </div>
-                      </div>
-                      
-                      {request.status === 'pending' && (
-                        <div className="flex space-x-2">
-                          <Button size="sm" variant="outline" className="flex-1 text-xs h-7 border-[#008542] text-[#008542] hover:bg-[#008542] hover:text-white">
-                            Aprovar
-                          </Button>
-                          <Button size="sm" variant="outline" className="flex-1 text-xs h-7">
-                            Recusar
-                          </Button>
-                        </div>
-                      )}
                     </div>
                   ))}
                 </div>

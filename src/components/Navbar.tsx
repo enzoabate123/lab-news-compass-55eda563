@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Bell, User, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -13,8 +12,7 @@ const Navbar = () => {
   const navItems = [
     { label: 'Início', path: '/' },
     { label: 'Laboratórios', path: '/laboratorios' },
-    { label: 'Pesquisas', path: '/pesquisas' },
-    { label: 'Notícias', path: '/noticias' }
+    { label: 'Pesquisas', path: '/pesquisas' }
   ];
 
   const notifications = [
