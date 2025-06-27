@@ -12,38 +12,38 @@ const Sidebar = () => {
   const location = useLocation();
 
   const conversations = [
-    { id: 1, name: 'Análise Delta', unread: 1, type: 'analysis', isPinned: true },
-    { id: 2, name: 'Laboratório Alpha', unread: 3, type: 'lab', isPinned: false },
-    { id: 3, name: 'Projeto Gamma', unread: 7, type: 'project', isPinned: true },
-    { id: 4, name: 'Pesquisa Beta', unread: 0, type: 'research', isPinned: false }
+    { id: 1, name: 'Análise Petroquímica', unread: 1, type: 'analysis', isPinned: true },
+    { id: 2, name: 'Laboratório Geológico', unread: 3, type: 'lab', isPinned: false },
+    { id: 3, name: 'Projeto Extração', unread: 7, type: 'project', isPinned: true },
+    { id: 4, name: 'Exploração Mineral', unread: 0, type: 'research', isPinned: false }
   ];
 
   const contacts = [
-    { id: 1, name: 'Dr. Maria Silva', status: 'online', lab: 'Biotecnologia' },
-    { id: 2, name: 'Dra. Ana Costa', status: 'offline', lab: 'Química Aplicada' },
-    { id: 3, name: 'Prof. João Santos', status: 'away', lab: 'Física Quântica' }
+    { id: 1, name: 'Dr. Carlos Pereira', status: 'online', lab: 'Geoquímica' },
+    { id: 2, name: 'Dra. Ana Rocha', status: 'offline', lab: 'Petróleo e Gás' },
+    { id: 3, name: 'Prof. João Mineral', status: 'away', lab: 'Mineralogia' }
   ];
 
   const requests = [
     {
       id: 1,
-      researcher: 'Dr. Carlos Lima',
-      project: 'Análise de Biomarcadores',
+      researcher: 'Dr. Eduardo Silva',
+      project: 'Análise de Reservatórios',
       time: '2h atrás',
       status: 'pending'
     },
     {
       id: 2,
-      researcher: 'Dra. Sofia Mendes',
-      project: 'Estudo Genético',
+      researcher: 'Dra. Marina Costa',
+      project: 'Exploração Offshore',
       time: '5h atrás',
       status: 'pending'
     }
   ];
 
   const notifications = [
-    { id: 1, title: 'Nova pesquisa publicada', message: 'Análise de Biomarcadores foi atualizada', time: '2h atrás' },
-    { id: 2, title: 'Convite para laboratório', message: 'Dr. Silva te convidou para Biotecnologia Avançada', time: '4h atrás' }
+    { id: 1, title: 'Novo relatório disponível', message: 'Análise de Reservatórios foi atualizada', time: '2h atrás' },
+    { id: 2, title: 'Convite para laboratório', message: 'Dr. Silva te convidou para Geoquímica Avançada', time: '4h atrás' }
   ];
 
   // Organizar chats: primeiro os fixados (alfabético), depois os outros (alfabético)
@@ -68,71 +68,47 @@ const Sidebar = () => {
 
   return (
     <div className={`${isCollapsed ? 'w-16' : 'w-80'} bg-white border-l border-gray-200 h-full flex flex-col transition-all duration-300`}>
-      {/* User Section - Always at top when expanded */}
-      {!isCollapsed && (
-        <div className="p-4 border-b border-gray-100">
-          <div 
-            className="flex items-center p-3 rounded-lg hover:bg-gray-50 cursor-pointer"
-            onClick={() => navigate('/perfil')}
-          >
-            <div className="w-10 h-10 bg-gradient-to-br from-[#008542] to-[#006298] rounded-full flex items-center justify-center text-white text-sm font-semibold mr-3">
-              DS
-            </div>
-            <div className="flex-1 min-w-0">
-              <div className="text-sm font-medium text-gray-900">Dr. Marina Santos</div>
-              <div className="text-xs text-gray-500">Pesquisadora Principal</div>
-            </div>
-            <div className="relative">
-              <Bell className="w-4 h-4 text-gray-400" />
-              <span className="absolute -top-1 -right-1 bg-[#fdc82f] text-black text-xs rounded-full w-4 h-4 flex items-center justify-center font-medium">
-                2
-              </span>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Tab Controls - Hidden when collapsed */}
+      {/* Tab Controls - Fixed width to prevent overflow */}
       {!isCollapsed && (
         <div className="flex p-3 border-b border-gray-100 gap-1">
           <Button
             variant={activeTab === 'conversations' ? 'default' : 'ghost'}
             size="sm"
             onClick={() => setActiveTab('conversations')}
-            className={`flex-1 text-xs ${
+            className={`flex-1 text-xs min-w-0 ${
               activeTab === 'conversations' 
                 ? 'bg-gradient-to-r from-[#008542] to-[#006298] text-white hover:from-[#006835] hover:to-[#004a7a]' 
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
-            <MessageCircle className="w-4 h-4 mr-1" />
-            Conversas
+            <MessageCircle className="w-4 h-4 mr-1 flex-shrink-0" />
+            <span className="truncate">Conversas</span>
           </Button>
           <Button
             variant={activeTab === 'contacts' ? 'default' : 'ghost'}
             size="sm"
             onClick={() => setActiveTab('contacts')}
-            className={`flex-1 text-xs ${
+            className={`flex-1 text-xs min-w-0 ${
               activeTab === 'contacts' 
                 ? 'bg-gradient-to-r from-[#008542] to-[#006298] text-white hover:from-[#006835] hover:to-[#004a7a]' 
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
-            <Users className="w-4 h-4 mr-1" />
-            Contatos
+            <Users className="w-4 h-4 mr-1 flex-shrink-0" />
+            <span className="truncate">Contatos</span>
           </Button>
           <Button
             variant={activeTab === 'requests' ? 'default' : 'ghost'}
             size="sm"
             onClick={() => setActiveTab('requests')}
-            className={`flex-1 text-xs ${
+            className={`flex-1 text-xs min-w-0 ${
               activeTab === 'requests' 
                 ? 'bg-gradient-to-r from-[#008542] to-[#006298] text-white hover:from-[#006835] hover:to-[#004a7a]' 
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
-            <Clock className="w-4 h-4 mr-1" />
-            Solicitações
+            <Clock className="w-4 h-4 mr-1 flex-shrink-0" />
+            <span className="truncate">Solicitações</span>
           </Button>
         </div>
       )}
@@ -142,12 +118,6 @@ const Sidebar = () => {
         {isCollapsed ? (
           // Collapsed view - show simplified bubbles
           <div className="space-y-3">
-            {/* User avatar */}
-            <div className="flex justify-center mb-6">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#008542] to-[#006298] rounded-full flex items-center justify-center text-white text-sm font-semibold">
-                DS
-              </div>
-            </div>
             {/* Conversations */}
             {sortedConversations.slice(0, 4).map((conv) => (
               <div
@@ -176,7 +146,7 @@ const Sidebar = () => {
             {activeTab === 'conversations' && (
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs uppercase text-gray-500 font-medium">Grupos de Pesquisa</span>
+                  <span className="text-xs uppercase text-gray-500 font-medium">Laboratórios de Pesquisa</span>
                   <Plus className="w-4 h-4 text-gray-400 hover:text-gray-600 cursor-pointer" />
                 </div>
                 <div className="space-y-2">
@@ -222,7 +192,7 @@ const Sidebar = () => {
             {activeTab === 'contacts' && (
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs uppercase text-gray-500 font-medium">Pesquisadores Online</span>
+                  <span className="text-xs uppercase text-gray-500 font-medium">Especialistas Online</span>
                 </div>
                 <div className="space-y-2">
                   {sortedContacts.map((contact) => (
@@ -253,7 +223,7 @@ const Sidebar = () => {
             {activeTab === 'requests' && (
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs uppercase text-gray-500 font-medium">Solicitações Pendentes</span>
+                  <span className="text-xs uppercase text-gray-500 font-medium">Solicitações de Acesso</span>
                 </div>
                 <div className="space-y-3">
                   {requests.map((request) => (
