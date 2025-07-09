@@ -1,16 +1,14 @@
 
 import React from 'react';
-import { TrendingUp, Activity, BookOpen, Newspaper } from 'lucide-react';
+import { TrendingUp, Activity, BookOpen } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import ResearchCard from '@/components/ResearchCard';
-import NewsCard from '@/components/NewsCard';
 
 const Home = () => {
   const stats = [
     { title: 'Laboratórios Ativos', value: '24', icon: Activity },
     { title: 'Pesquisas em Andamento', value: '156', icon: BookOpen },
-    { title: 'Publicações este Mês', value: '43', icon: TrendingUp },
-    { title: 'Notícias Relevantes', value: '89', icon: Newspaper }
+    { title: 'Publicações este Mês', value: '43', icon: TrendingUp }
   ];
 
   const featuredResearch = [
@@ -40,27 +38,10 @@ const Home = () => {
     }
   ];
 
-  const recentNews = [
-    {
-      title: 'Descoberta de Novo Campo de Petróleo',
-      summary: 'Pesquisadores identificam reservatório com potencial de 2 bilhões de barris na Bacia de Santos.',
-      source: 'Petro Journal',
-      time: '2h atrás',
-      category: 'Exploração'
-    },
-    {
-      title: 'Avanços em Fraturamento Hidráulico',
-      summary: 'Nova técnica reduz impacto ambiental em 40% mantendo eficiência na extração de gás de xisto.',
-      source: 'Energy Science',
-      time: '4h atrás',
-      category: 'Tecnologia'
-    }
-  ];
-
   return (
     <div className="space-y-8">
       {/* Stats Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {stats.map((stat, index) => (
           <Card key={index} className="hover:shadow-lg transition-shadow">
             <CardContent className="p-6">
@@ -78,36 +59,18 @@ const Home = () => {
         ))}
       </div>
 
-      {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {/* Research Section */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold text-gray-900">Pesquisas em Destaque</h2>
-            <button className="text-[#006298] hover:text-[#008542] text-sm font-medium transition-colors">
-              Ver todas
-            </button>
-          </div>
-          <div className="space-y-6">
-            {featuredResearch.map((research, index) => (
-              <ResearchCard key={index} {...research} />
-            ))}
-          </div>
+      {/* Research Section - Full Width */}
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <h2 className="text-2xl font-semibold text-gray-900">Pesquisas em Destaque</h2>
+          <button className="text-[#006298] hover:text-[#008542] text-sm font-medium transition-colors">
+            Ver todas
+          </button>
         </div>
-
-        {/* News Section */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold text-gray-900">Notícias Recentes</h2>
-            <button className="text-[#006298] hover:text-[#008542] text-sm font-medium transition-colors">
-              Ver todas
-            </button>
-          </div>
-          <div className="space-y-6">
-            {recentNews.map((news, index) => (
-              <NewsCard key={index} {...news} />
-            ))}
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {featuredResearch.map((research, index) => (
+            <ResearchCard key={index} {...research} />
+          ))}
         </div>
       </div>
     </div>

@@ -1,9 +1,15 @@
 
 import React, { useState } from 'react';
-import { Search, Filter, Calendar, Users, TrendingUp, Plus } from 'lucide-react';
+import { Search, Filter, Calendar, Users, TrendingUp, Plus, ChevronDown } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 
 const Pesquisas = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -124,21 +130,26 @@ const Pesquisas = () => {
           />
         </div>
         <div className="flex gap-2">
-          <select
-            value={filterStatus}
-            onChange={(e) => setFilterStatus(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-          >
-            {statusOptions.map(status => (
-              <option key={status} value={status}>
-                {status === 'all' ? 'Todos os status' : status}
-              </option>
-            ))}
-          </select>
-          <Button variant="outline" size="sm">
-            <Filter className="w-4 h-4 mr-2" />
-            Filtros
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm" className="flex items-center gap-2">
+                <Filter className="w-4 h-4" />
+                Filtros
+                <ChevronDown className="w-4 h-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-48">
+              {statusOptions.map(status => (
+                <DropdownMenuItem
+                  key={status}
+                  onClick={() => setFilterStatus(status)}
+                  className={filterStatus === status ? 'bg-gray-100' : ''}
+                >
+                  {status === 'all' ? 'Todos os status' : status}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
 
