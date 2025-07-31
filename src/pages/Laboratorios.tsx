@@ -63,10 +63,70 @@ const Laboratorios = () => {
       category: 'Engenharia',
       image: '/placeholder.svg',
       status: 'Ativo'
+    },
+    {
+      id: 5,
+      name: 'Centro de Tecnologia em Cimentação de Poços',
+      description: 'Especializado no desenvolvimento de pastas de cimento e aditivos para cimentação primária e secundária em poços petrolíferos.',
+      location: 'Rio de Janeiro, RJ',
+      researchers: 28,
+      projects: 16,
+      founded: '2019',
+      category: 'Cimentação',
+      image: '/placeholder.svg',
+      status: 'Ativo'
+    },
+    {
+      id: 6,
+      name: 'Laboratório de Materiais para Completação',
+      description: 'Pesquisa e teste de materiais cimentícios para operações de completação em águas ultraprofundas.',
+      location: 'Santos, SP',
+      researchers: 15,
+      projects: 9,
+      founded: '2021',
+      category: 'Cimentação',
+      image: '/placeholder.svg',
+      status: 'Ativo'
+    },
+    {
+      id: 7,
+      name: 'Instituto de Cimentos Especiais para Petróleo',
+      description: 'Desenvolvimento de formulações de cimento resistentes a altas temperaturas e pressões para o pré-sal.',
+      location: 'Salvador, BA',
+      researchers: 20,
+      projects: 11,
+      founded: '2020',
+      category: 'Cimentação',
+      image: '/placeholder.svg',
+      status: 'Ativo'
+    },
+    {
+      id: 8,
+      name: 'Lab de Aditivos para Cimentação Offshore',
+      description: 'Especializado em aditivos químicos para pastas de cimento em operações offshore no Brasil.',
+      location: 'Macaé, RJ',
+      researchers: 12,
+      projects: 7,
+      founded: '2022',
+      category: 'Cimentação',
+      image: '/placeholder.svg',
+      status: 'Ativo'
+    },
+    {
+      id: 9,
+      name: 'Centro de Integridade de Barreiras Cimentícias',
+      description: 'Avaliação da integridade e durabilidade de barreiras de cimento em poços de petróleo e gás.',
+      location: 'Natal, RN',
+      researchers: 18,
+      projects: 13,
+      founded: '2018',
+      category: 'Cimentação',
+      image: '/placeholder.svg',
+      status: 'Ativo'
     }
   ];
 
-  const categories = ['all', 'Geoquímica', 'Exploração', 'Mineralogia', 'Engenharia'];
+  const categories = ['all', 'Geoquímica', 'Exploração', 'Mineralogia', 'Engenharia', 'Cimentação'];
 
   const filteredLabs = laboratories.filter(lab => {
     const matchesSearch = lab.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

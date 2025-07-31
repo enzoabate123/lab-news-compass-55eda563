@@ -80,6 +80,84 @@ const Pesquisas = () => {
       category: 'Geoquímica',
       publications: 12,
       funding: 'R$ 5.5M'
+    },
+    {
+      id: 6,
+      title: 'Cimentação Primária em Águas Ultraprofundas',
+      description: 'Desenvolvimento de pastas de cimento de alta performance para cimentação primária em poços do pré-sal.',
+      lab: 'Centro de Tecnologia em Cimentação de Poços',
+      researchers: 14,
+      startDate: '2024-03-01',
+      status: 'Em andamento',
+      progress: 45,
+      category: 'Cimentação',
+      publications: 2,
+      funding: 'R$ 3.2M'
+    },
+    {
+      id: 7,
+      title: 'Aditivos Anti-Gás para Cimentação Offshore',
+      description: 'Pesquisa de aditivos químicos para prevenir migração de gás em operações de cimentação offshore.',
+      lab: 'Lab de Aditivos para Cimentação Offshore',
+      researchers: 9,
+      startDate: '2023-11-20',
+      status: 'Em andamento',
+      progress: 72,
+      category: 'Cimentação',
+      publications: 4,
+      funding: 'R$ 2.1M'
+    },
+    {
+      id: 8,
+      title: 'Cimentos Resistentes a CO2 e H2S',
+      description: 'Formulação de cimentos especiais resistentes à corrosão por CO2 e H2S em ambientes agressivos.',
+      lab: 'Instituto de Cimentos Especiais para Petróleo',
+      researchers: 16,
+      startDate: '2024-01-08',
+      status: 'Em andamento',
+      progress: 38,
+      category: 'Cimentação',
+      publications: 1,
+      funding: 'R$ 2.8M'
+    },
+    {
+      id: 9,
+      title: 'Avaliação de Integridade de Barreiras Cimentícias',
+      description: 'Metodologias avançadas para avaliação da integridade de barreiras de cimento ao longo da vida útil do poço.',
+      lab: 'Centro de Integridade de Barreiras Cimentícias',
+      researchers: 13,
+      startDate: '2023-09-15',
+      status: 'Em andamento',
+      progress: 81,
+      category: 'Cimentação',
+      publications: 6,
+      funding: 'R$ 3.5M'
+    },
+    {
+      id: 10,
+      title: 'Cimentação Secundária com Microcimento',
+      description: 'Técnicas inovadoras de cimentação secundária utilizando microcimento para reparos em poços.',
+      lab: 'Laboratório de Materiais para Completação',
+      researchers: 11,
+      startDate: '2024-04-12',
+      status: 'Iniciando',
+      progress: 15,
+      category: 'Cimentação',
+      publications: 0,
+      funding: 'R$ 1.7M'
+    },
+    {
+      id: 11,
+      title: 'Pasta de Cimento com Fibras para HPHT',
+      description: 'Desenvolvimento de pastas de cimento reforçadas com fibras para condições de alta pressão e temperatura.',
+      lab: 'Centro de Tecnologia em Cimentação de Poços',
+      researchers: 18,
+      startDate: '2023-07-30',
+      status: 'Concluído',
+      progress: 100,
+      category: 'Cimentação',
+      publications: 8,
+      funding: 'R$ 4.1M'
     }
   ];
 
